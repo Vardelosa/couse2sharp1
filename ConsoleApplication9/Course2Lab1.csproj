@@ -76,6 +76,8 @@
     <Compile Include="CopywriterCollection.cs" />
     <Compile Include="CopywriterListHandlerEventArgs.cs" />
     <Compile Include="IDateAndCopy.cs" />
+    <Compile Include="Journal.cs" />
+    <Compile Include="JournalEntry.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Person.cs" />

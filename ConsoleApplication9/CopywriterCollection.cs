@@ -10,19 +10,28 @@ namespace ConsoleApplication9
     class CopywriterCollection : Person
     {
 
-        List<Copywriter> CopywriterList = new List<Copywriter>();
-
+        public List<Copywriter> CopywriterList = new List<Copywriter>();
+        
         public void AddDefaults()
         {
             const int defa = 3;
-            for (int i = 0; i < defa; i++)
+            for (int n = 0; n < defa; n++)
+            {
                 CopywriterList.Add(new Copywriter());
+                CopywritersCountChanged?.Invoke(this, new CopywriterListHandlerEventArgs(ColName,
+                                                                                 "Elemest added",
+                                                                                 new Copywriter()));
+            }
         }
+        
         public void AddCopywriters(params Copywriter[] copywriters)
         {
             for (int i = 0; i < copywriters.Length; i++)
             {
                 CopywriterList.Add(copywriters[i]);
+                CopywritersCountChanged?.Invoke(this, new CopywriterListHandlerEventArgs(ColName,
+                                                                                 "Elemest added",
+                                                                                 copywriters[i]));
             }
         }
         public override string ToString()
@@ -44,7 +53,7 @@ namespace ConsoleApplication9
             }
             return s;
         }
-        delegate void CopywriterListHandler(object source, CopywriterListHandlerEventArgs args);
+        public delegate void CopywriterListHandler(object source, CopywriterListHandlerEventArgs args);
         public string ColName { get; set; }
        
         
@@ -55,12 +64,16 @@ namespace ConsoleApplication9
             else
             {
                 CopywriterList.RemoveAt(n);
+                CopywritersCountChanged?.Invoke(this, new CopywriterListHandlerEventArgs(ColName,
+                                                                                 "Elemest deleted",
+                                                                                 CopywriterList[n]));
                 return true;
             }
 
         }
         public Copywriter this[int index]
         {
+            
             get
             {
                 return CopywriterList[index];
@@ -68,7 +81,13 @@ namespace ConsoleApplication9
             set
             {
                 CopywriterList[index] = value;
+                CopywriterReferenceChanged?.Invoke(this, new CopywriterListHandlerEventArgs(ColName,
+                                                                                    "Element Changed",
+                                                                                    value));
             }
         }
-    }
+        public event CopywriterListHandler CopywritersCountChanged;
+        public event CopywriterListHandler CopywriterReferenceChanged;
+
+        }
 }

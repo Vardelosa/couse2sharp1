@@ -5,27 +5,22 @@ using System.Text;
 
 namespace ConsoleApplication9
 {
-    class CopywriterListHandlerEventArgs : System.EventArgs
+    class JournalEntry
     {
         public string ColName { get; set; }
         public string ColChanges { get; set; }
-        public Copywriter Link { get; set; }
-        public CopywriterListHandlerEventArgs(string cn, string cc, Copywriter link)
+        public string ObjInf { get; set; }
+        public JournalEntry(string cn, string cc, string oi)
         {
             ColName = cn;
             ColChanges = cc;
-            Link = link;
-
+            ObjInf = oi;
         }
-        CopywriterListHandlerEventArgs()
-        {
-
-        }
-
         public override string ToString()
         {
-            string s = ColName +"\n" + ColChanges+ "\n" + Link.ToShortString();
+            string s ="\n"+ "Collection name: " + ColName + "\n" +"Changes: " + ColChanges + "\n" + "Copywriter: \n" +ObjInf;
             return s;
         }
+      
     }
 }
