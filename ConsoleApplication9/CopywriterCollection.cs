@@ -59,5 +59,16 @@ namespace ConsoleApplication9
             }
 
         }
+        public Copywriter this[int index]
+        {
+            get
+            {
+                return CopywriterList[index];
+            }
+            set
+            {
+                CopywriterList[index] = value;
+            }
+        }
     }
 }
