@@ -53,6 +53,7 @@ namespace ConsoleApplication9
             }
             return s;
         }
+        //обьявление делегата
         public delegate void CopywriterListHandler(object source, CopywriterListHandlerEventArgs args);
         public string ColName { get; set; }
        

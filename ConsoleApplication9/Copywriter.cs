@@ -174,10 +174,7 @@ namespace ConsoleApplication9
         }
         public string ToShortString()
         {
-            string s = "Author: " + AuthorInfo + "\r\n Nickname: " + Nickname + "\r\n Level: " + Level + "\r\n Rating: " + Rating;
-
-            s = s + "\r\n Ammount of articles: " + artinfo.Count;
-            s = s + "\r\n Ammount of orders: " + ordinfo.Count;
+            string s = "Author: " + AuthorInfo + "\r\n Nickname: " + Nickname;
             return s;
         }
 
